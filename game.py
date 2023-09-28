@@ -1,3 +1,8 @@
+"""Jeu Hunt the Bears
+- les ours apparaissent au hasard dans la forêt
+- clique sur les ours pour gagner des points
+- tu n'as que 60 secondes pour jouer"""
+
 import pygame
 
 from scenes import Partie, Scene, Fin

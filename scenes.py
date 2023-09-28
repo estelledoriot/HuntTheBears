@@ -147,9 +147,10 @@ class Fin:
 
     def joue_tour(self) -> None:
         """Rien"""
-        if self.bouton_rejouer.est_clique():
-            self.son_bouton.play()
-            self.next = True
+        for _ in pygame.event.get(pygame.MOUSEBUTTONDOWN):
+            if self.bouton_rejouer.touche_souris():
+                self.son_bouton.play()
+                self.next = True
 
     def passe_suivant(self) -> bool:
         """Vérifie si le bouton rejouer est cliqué"""

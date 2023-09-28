@@ -34,9 +34,3 @@ class Bouton:
     def touche_souris(self) -> bool:
         """Détermine si la souris touche le bouton"""
         return self.bouton.collidepoint(pygame.mouse.get_pos())
-
-    def est_clique(self) -> bool:
-        """Détermine si on clique sur le bouton"""
-        return any(
-            self.touche_souris() for _ in pygame.event.get(pygame.MOUSEBUTTONDOWN)
-        )
