@@ -34,17 +34,11 @@ class Ours(pygame.sprite.Sprite):
 
         self.start_time: int = pygame.time.get_ticks()
 
-    def est_clique(self) -> bool:
+    def touche_souris(self) -> bool:
         """Détermine si on clique sur le bouton"""
-        return (
-            self.rect.collidepoint(pygame.mouse.get_pos())
-            and pygame.mouse.get_pressed()[0]
-        )
+        return self.rect.collidepoint(pygame.mouse.get_pos())
 
     def update(self) -> None:
         """Disparition de l'ours"""
-        if pygame.time.get_ticks() - self.start_time > 1000:
-            self.kill()
-
-        if self.est_clique():
+        if pygame.time.get_ticks() - self.start_time > 800:
             self.kill()

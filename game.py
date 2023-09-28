@@ -3,7 +3,7 @@ import pygame
 from scenes import Partie, Scene, Fin
 
 
-class Fenetre:
+class Jeu:
     """Jeu"""
 
     def __init__(self) -> None:
@@ -27,7 +27,7 @@ class Fenetre:
         if isinstance(self.scene_courante, Fin):
             self.scene_courante = Partie()
         elif isinstance(self.scene_courante, Partie):
-            self.scene_courante = Fin()
+            self.scene_courante = Fin(self.scene_courante.score.score)
 
     def jouer(self) -> None:
         """Lance le jeu"""
@@ -48,6 +48,6 @@ class Fenetre:
 
 
 if __name__ == "__main__":
-    jeu = Fenetre()
+    jeu = Jeu()
     jeu.jouer()
     pygame.quit()
