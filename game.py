@@ -1,6 +1,6 @@
 import pygame
 
-from scenes import Partie, Scene
+from scenes import Partie, Scene, Fin
 
 
 class Fenetre:
@@ -24,12 +24,10 @@ class Fenetre:
 
     def scene_suivante(self) -> None:
         """Passe à la scène suivante"""
-        # if isinstance(self.scene_courante, Fin):
-        #     self.scene_courante = Partie()
-        # elif isinstance(self.scene_courante, Partie) and self.scene_courante.perdu:
-        #     self.scene_courante = Fin(False)
-        # elif isinstance(self.scene_courante, Partie) and self.scene_courante.gagne:
-        #     self.scene_courante = Fin(True)
+        if isinstance(self.scene_courante, Fin):
+            self.scene_courante = Partie()
+        elif isinstance(self.scene_courante, Partie):
+            self.scene_courante = Fin()
 
     def jouer(self) -> None:
         """Lance le jeu"""

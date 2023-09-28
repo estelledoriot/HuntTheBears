@@ -1,5 +1,5 @@
 """
-Contient les éléments du jeu: Personnages, objets, timer
+classe Ours
 """
 
 from random import randint
@@ -43,34 +43,8 @@ class Ours(pygame.sprite.Sprite):
 
     def update(self) -> None:
         """Disparition de l'ours"""
-        if pygame.time.get_ticks() - self.start_time > 2000:
+        if pygame.time.get_ticks() - self.start_time > 1000:
             self.kill()
 
         if self.est_clique():
             self.kill()
-
-
-class Objet(pygame.sprite.Sprite):
-    """Objet à attrapper
-    filename: fichier contenant l'image
-    centerx_depart, bottomy_depart: position initiale de l'objet
-    largeur_objet: largeur de l'objet
-    """
-
-    def __init__(
-        self,
-        filename: str,
-        centerx_depart: int,
-        centery_depart: int,
-        largeur_objet: int,
-    ) -> None:
-        super().__init__()
-
-        self.image: pygame.Surface = pygame.image.load(filename).convert_alpha()
-        self.image = pygame.transform.scale_by(
-            self.image, largeur_objet / self.image.get_width()
-        )
-
-        self.rect: pygame.Rect = self.image.get_rect(
-            center=(centerx_depart, centery_depart)
-        )
